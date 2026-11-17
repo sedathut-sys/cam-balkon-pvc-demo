@@ -25,6 +25,7 @@ test('Ziyaretçi demo şablonu ve indeksleme korunur', () => {
   const layout = readFileSync(new URL('../src/layouts/Main.astro',import.meta.url),'utf8');
   const index = readFileSync(new URL('../src/pages/index.astro',import.meta.url),'utf8');
   assert.match(layout,/noindex,nofollow/);
+  assert.match(layout,/BASE_URL\.endsWith\('\/'\)/);
   assert.match(index,/Örnek site tasarımı/);
   assert.match(index,/WhatsApp numarası henüz eklenmedi/);
 });
