@@ -1,0 +1,54 @@
+name: Cam Balkon PVC - GitHub Pages Demo
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: cam-balkon-pvc-demo-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Demo derleme ve kalite
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Demo kaynagini al
+        uses: actions/checkout@v4
+      - name: Node.js 24 kur
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Bagimliliklari kur
+        run: npm install --no-audit --no-fund
+      - name: Demo veri testleri
+        run: npm test
+      - name: Astro statik demo derlemesi
+        run: npm run build
+      - name: Guvenli Pages cikti denetimi
+        run: npm run quality
+      - name: GitHub Pages'i yapilandir
+        uses: actions/configure-pages@v5
+      - name: Yalniz statik siteyi Pages'e hazirla
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./dist
+
+  deploy:
+    name: Demo yayini
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: GitHub Pages yayini
+        id: deployment
+        uses: actions/deploy-pages@v5
