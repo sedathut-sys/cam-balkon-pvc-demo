@@ -1,20 +1,19 @@
-# Cam Balkon & PVC — Ziyaretçi Demo
+# Cam Balkon & PVC — Herkese Açık DEMO
 
-Bu **Public** depo yalnızca müşteriye gösterilecek örnek sektörel web sitesini içerir.
+Bu **Public** depo yalnızca örnek verilerle hazırlanan, çalışır üretim sistemi olmayan bir ziyaretçi önizlemesidir. Özel kaynak deposu \`profesyonel-site-sablonlari\` Private olarak kalır.
 
-- Teknoloji: Astro 7 (statik) + React 19.
-- Firma, görseller, teklif ve WhatsApp gerçek değildir; demo olarak açıkça işaretlenmiştir.
-- Gerçek yönetim API'si, D1/R2, şifreler, özel işletme verileri veya müşteri verileri bu depoda yoktur.
-- Asıl ana kaynak deposu **Private** `profesyonel-site-sablonlari` olarak korunur.
-- Otomatik GitHub Actions: `.github/workflows/pages.yml`.
-- Build: `npm run build`; kalite kontrolü: `npm run quality`.
+## Önizleme sayfaları
 
-## GitHub Pages kurulumu
+- Müşteri vitrini: https://sedathut-sys.github.io/cam-balkon-pvc-demo/
+- Beş bölümlü demo paneli: https://sedathut-sys.github.io/cam-balkon-pvc-demo/panel/
+- Cam Balkon / PVC üç adımlı teklif demosu: https://sedathut-sys.github.io/cam-balkon-pvc-demo/teklif/
 
-GitHub **Settings → Pages → Build and deployment → Source: GitHub Actions** seçilir.
-Sonra `main` dalındaki `pages.yml` derlemeyi kontrol edip yalnızca `dist/` klasörünü yayınlar.
+**Bu bağlantılar tasarım önizlemeleridir.** Panel herkese açıktır ve gerçek giriş/yetkilendirme içermez. Teklif taslağı gerçek tutar, mesaj, kayıt veya WhatsApp iletimi oluşturmaz. Firma bilgileri ve görseller örnektir. D1/R2, Cloudflare, şifreler, API ve gerçek müşteri verileri bulunmaz.
 
-Hedef önizleme yolu: `https://sedathut-sys.github.io/cam-balkon-pvc-demo/`.
-**Yayın çalıştığı HTTP ve sayfa içeriğiyle doğrulanmadan aktif kabul edilmez.**
+## GitHub Pages
 
-Bu çalışma Taş Fırın, Cloudflare ve diğer sitelerin yayınını değiştirmez.
+\`.github/workflows/pages.yml\`, \`main\` değişikliklerinde Node.js 24 ile demo birim testlerini ve \`npm run build\` komutunu çalıştırır. \`npm run quality\` üç ayrı statik sayfanın güvenlik uyarılarını ve site alt yollarını doğrular. Ardından yalnızca \`dist/\` klasörü GitHub Pages'e gönderilir.
+
+GitHub Settings → Pages → Build and deployment → Source **GitHub Actions** olmalıdır.
+
+**Yayın bağlantıları canlı açılarak doğrulanmadan güncellendiği iddia edilmez.**

@@ -102,7 +102,7 @@ svg { display: block; }
 .scene-photo-label { position: absolute; z-index: 4; bottom: 32px; left: 50%; transform: translateX(-50%); width: min(90%, 360px); padding: 15px 20px; border-radius: 7px; background: #f9f8f4e8; color: var(--ink); text-align: center; box-shadow: 0 8px 20px #153d3320; }
 .scene-photo-label span { display: block; font-size: 9px; font-weight: 750; letter-spacing: .17em; margin-bottom: 4px; }
 .scene-photo-label strong { font-size: 13px; }
-.hero-floating-label { position: absolute; z-index: 3; left: -44px; bottom: 63px; min-width: 205px; display: flex; align-items: center; gap: 12px; padding: 18px 19px; background: #fffdf8; border: 1px solid #e8e5da; box-shadow: 0 12px 40px #24443d19; font-size: 12px; line-height: 1.5; }
+.hero-floating-label { position: absolute; z-index: 3; left: -44px; top: 75px; bottom: auto; min-width: 205px; display: flex; align-items: center; gap: 12px; padding: 18px 19px; background: #fffdf8; border: 1px solid #e8e5da; box-shadow: 0 12px 40px #24443d19; font-size: 12px; line-height: 1.5; }
 .hero-floating-label strong { font-size: 11px; }
 .hero-floating-label__spark { font-size: 29px; color: var(--accent); }
 .services-section { background: #fff; }
@@ -216,7 +216,7 @@ svg { display: block; }
   .hero-art { order: -1; width: 100%; padding-right: 13px; padding-bottom: 13px; }
   .hero-art__inner { min-height: 0; height: clamp(330px, 105vw, 520px); }
   .hero-outline { top: 13px; left: 13px; }
-  .hero-floating-label { left: -7px; bottom: 32px; padding: 12px; min-width: auto; }
+  .hero-floating-label { left: -7px; top: 24px; bottom: auto; padding: 12px; min-width: auto; }
   .hero-floating-label__spark { font-size: 21px; }
   .hero-floating-label span:last-child { font-size: 10px; }
   .hero-floating-label strong { font-size: 10px; }
