@@ -46,3 +46,33 @@ jobs:
       - name: GitHub Pages yayini
         id: deployment
         uses: actions/deploy-pages@v5
+      - name: Canli demo HTTP, icerik ve gorsel testi
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://sedathut-sys.github.io/cam-balkon-pvc-demo"
+          updated=0
+          for attempt in {1..12}; do
+            if curl -fsSL --max-time 20 -H "Cache-Control: no-cache" "$BASE/" -o /tmp/pvc-index.html &&
+              grep -Fq "YAPAY ZEKÂ · TEMSİLÎ" /tmp/pvc-index.html; then
+              updated=1
+              break
+            fi
+            sleep 5
+          done
+          if [ "$updated" -ne 1 ]; then
+            echo "FAIL: Yayin adresi yeni gorselli surumu gostermiyor"
+            exit 1
+          fi
+          grep -Fq 'noindex,nofollow' /tmp/pvc-index.html
+          for slug in panel/ teklif/ projeler/ hizmetler/cam-balkon/ hizmetler/pvc/; do
+            curl -fsSL --max-time 20 "$BASE/$slug" -o /tmp/pvc-page.html
+            grep -Fq 'noindex,nofollow' /tmp/pvc-page.html
+            echo "PASS: $slug"
+          done
+          for asset in images/demo/hero-cam-balkon.webp images/demo/logo-isaret.png _astro/index.CuzLJi0M.css _astro/client.CzWaolnw.js; do
+            curl -fsSL --max-time 20 "$BASE/$asset" -o /tmp/pvc-asset
+            test -s /tmp/pvc-asset
+            echo "PASS: $asset"
+          done
+          echo "PASS: GitHub Pages canli gorselli demo"
