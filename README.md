@@ -1,19 +1,23 @@
-# Cam Balkon & PVC — Herkese Açık DEMO
+# Cam Balkon & PVC — Herkese Açık Görselli DEMO
 
-Bu **Public** depo yalnızca örnek verilerle hazırlanan, çalışır üretim sistemi olmayan bir ziyaretçi önizlemesidir. Özel kaynak deposu \`profesyonel-site-sablonlari\` Private olarak kalır.
+Bu **Public** depo yalnızca müşteriye gösterilecek **derlenmiş statik demo** yayınını içerir. Tam Astro/React kaynak kodu, testler ve gerçek işletmeci altyapısı özel `sedathut-sys/profesyonel-site-sablonlari` deposundadır. Public depoda bulunan önceki demo geliştirme kaynakları, artık **yayımlanan sürümün kaynağı değildir**; `site/` GitHub Pages'e dağıtılır.
 
-## Önizleme sayfaları
+## Ziyaretçi test adresleri
 
-- Müşteri vitrini: https://sedathut-sys.github.io/cam-balkon-pvc-demo/
-- Beş bölümlü demo paneli: https://sedathut-sys.github.io/cam-balkon-pvc-demo/panel/
-- Cam Balkon / PVC üç adımlı teklif demosu: https://sedathut-sys.github.io/cam-balkon-pvc-demo/teklif/
+- [Müşteri ana sayfası](https://sedathut-sys.github.io/cam-balkon-pvc-demo/)
+- [Hizmetler — Cam Balkon](https://sedathut-sys.github.io/cam-balkon-pvc-demo/hizmetler/cam-balkon/)
+- [Hizmetler — PVC](https://sedathut-sys.github.io/cam-balkon-pvc-demo/hizmetler/pvc/)
+- [Proje galerisi](https://sedathut-sys.github.io/cam-balkon-pvc-demo/projeler/)
+- [Beş bölümlü demo paneli](https://sedathut-sys.github.io/cam-balkon-pvc-demo/panel/)
+- [Üç adımlı teklif demosu](https://sedathut-sys.github.io/cam-balkon-pvc-demo/teklif/)
 
-**Bu bağlantılar tasarım önizlemeleridir.** Panel herkese açıktır ve gerçek giriş/yetkilendirme içermez. Teklif taslağı gerçek tutar, mesaj, kayıt veya WhatsApp iletimi oluşturmaz. Firma bilgileri ve görseller örnektir. D1/R2, Cloudflare, şifreler, API ve gerçek müşteri verileri bulunmaz.
+## Sınırlar ve güvenlik
 
-## GitHub Pages
+Görseller yapay zekâ ile oluşturulmuş **temsili** örneklerdir; gerçek işletme referansları değildir. Bu sitede gerçek fiyat motoru, WhatsApp gönderimi, yönetim API'si, D1/R2/Cloudflare, gerçek üyelik veya müşteri verisi bulunmaz. Panel herkese açık tasarım demodur.
 
-\`.github/workflows/pages.yml\`, \`main\` değişikliklerinde Node.js 24 ile demo birim testlerini ve \`npm run build\` komutunu çalıştırır. \`npm run quality\` üç ayrı statik sayfanın güvenlik uyarılarını ve site alt yollarını doğrular. Ardından yalnızca \`dist/\` klasörü GitHub Pages'e gönderilir.
+- **Asıl özel geliştirme dalı:** `feature/cam-balkon-pvc-gorsel-hazirlik-20261118`
+- **Kaynakta doğrulanan test:** 52/52 birim testi, 450/450 Playwright, Astro/TypeScript ve üretim derlemesi PASS (18 Kasım 2026)
+- **Yayın güvencesi:** `.github/workflows/pages.yml` içindeki `node scripts/check-static-release.mjs` yalnızca `site/` klasörünü test edip yayımlar.
+- **Eski demo yedeği:** `backup/onceki-demo-2026-11-18` dalı.
 
-GitHub Settings → Pages → Build and deployment → Source **GitHub Actions** olmalıdır.
-
-**Yayın bağlantıları canlı açılarak doğrulanmadan güncellendiği iddia edilmez.**
+Yayın sonrası gerçek URL ve görseller HTTP üzerinden kontrol edilmeden "canlı onay" verilmez.

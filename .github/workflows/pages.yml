@@ -16,30 +16,24 @@ concurrency:
 
 jobs:
   build:
-    name: Demo derleme ve kalite
+    name: Derlenmis ziyaretci demosunu denetle
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
-      - name: Demo kaynagini al
+      - name: Demo yayin dosyalarini al
         uses: actions/checkout@v4
       - name: Node.js 24 kur
         uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Bagimliliklari kur
-        run: npm install --no-audit --no-fund
-      - name: Demo veri testleri
-        run: npm test
-      - name: Astro statik demo derlemesi
-        run: npm run build
-      - name: Guvenli Pages cikti denetimi
-        run: npm run quality
+      - name: Statik demo guvenlik ve baglanti kontrolleri
+        run: node scripts/check-static-release.mjs
       - name: GitHub Pages'i yapilandir
         uses: actions/configure-pages@v5
-      - name: Yalniz statik siteyi Pages'e hazirla
+      - name: Yalnizca derlenmis site klasorunu yayina hazirla
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./dist
+          path: ./site
 
   deploy:
     name: Demo yayini
